@@ -2,10 +2,12 @@
 
 #include <iostream>
 #include <string>
+#include <random>
 
 using namespace std;
 void inputQ();
-void answerQ();
+string answerQ();
+int randomNumber();
 void clearScreen();
 void pause();
 
@@ -27,7 +29,7 @@ int main()
 		cout << "Please enter a yes/no question: \n";
 		inputQ();
 		cout << "\n...\n\n";
-		answerQ();
+		cout << answerQ() << endl;
 		cout << "--------------------------------------";
 		cout << "\nWant to try again? (Y = yes, N = no)\n";
 		cin >> again;
@@ -35,84 +37,103 @@ int main()
 	return 0;
 }
 
+
+// read the question that was input
 void inputQ()
 {
-	char letter;
-	do
+	string ans;
+	do 
 	{
-		cin.get(letter);
-	} while (letter != '?');
+		getline(cin, ans);
+	} while (ans.length() < 1);
 }
 
-void answerQ()
+//give a randomly selected answer
+string answerQ()
 {
-	int num = (rand() % 20) + 1;
+	string response;
+	//int num = (rand() % 20) + 1;
+	int num = randomNumber();
+	
 	switch (num)
 	{
 	case 1:
-		cout << "Nope. Sorry, Charlie\n";
+		response = "Nope. Sorry, Charlie";
 		break;
 	case 2:
-		cout << "Well, what do you think???\n";
+		response = "The answer is yes, or my name isn't Zaphod Beeblebrox.";
 		break;
 	case 3:
-		cout << "It's possible, pig.\n";
+		response = "It's possible, pig.";
 		break;
 	case 4:
-		cout << "Shoot, I don't know!\n";
+		response = "Shoot, I don't know!";
 		break;
 	case 5:
-		cout << "That's a stupid question. Ask something else.\n";
+		response = "That's a stupid question. Ask something else.";
 		break;
 	case 6:
-		cout << "I think you look like Cap'n Crunch.\n";
+		response = "I think you look like Cap'n Crunch.";
 		break;
 	case 7:
-		cout << "The answer is yes, or my name isn't Zaphod Beetlebrox.\n";
+		response = "Well, what do you think???";
 		break;
 	case 8:
-		cout << "Perhaps... but then again, perhaps not...\n";
+		response = "Perhaps... but then again, perhaps not...";
 		break;
 	case 9:
-		cout << "Inconceivable!\n";
+		response = "Inconceivable!";
 		break;
 	case 10:
-		cout << "42.\n";
+		response = "42.";
 		break;
 	case 11:
-		cout << "I don't think so, Tim.\n";
+		response = "I don't think so, Tim.";
 		break;
 	case 12:
-		cout << "Cookie Man say no.\n";
+		response = "Cookie Man say no.";
 		break;
 	case 13:
-		cout << "Make it so.\n";
+		response = "Make it so.";
 		break;
 	case 14:
-		cout << "Affirmative, Captain. Live long and prosper.\n";
+		response = "Affirmative, Captain. Live long and prosper.";
 		break;
 	case 15:
-		cout << "What do I look like, a crystal ball?\n";
+		response = "What do I look like, a crystal ball?";
 		break;
 	case 16:
-		cout << "Look, pal, that's your problem.\n";
+		response = "Look, pal, that's your problem.";
 		break;
 	case 17:
-		cout << "What are you talking about???\n";
+		response = "What are you talking about???";
 		break;
 	case 18:
-		cout << "I am Groot.\n";
+		response = "I am Groot.";
 		break;
 	case 19:
-		cout << "Ehhh, wibbly-wobbly timey-wimey.";
+		response = "Ehhh, wibbly-wobbly timey-wimey.";
 		break;
 	case 20:
-		cout << "Use the Force, Luke.\n";
+		response = "Use the Force, Luke.";
 		break;
 	default:
-		cout << "Errr, sorry, there's been an error. Try again.\n";
+		response = "Errr, sorry, there's been an error. Try again.";
 	}
+	return response;
 }
+
+//generate a uniformly distributed random number
+int randomNumber()
+{
+	const int lower = 1;
+	const int upper = 20;
+	random_device randDev;
+	mt19937 generator(randDev());
+	uniform_int_distribution<int> distr(lower, upper);
+	return distr(generator);
+}
+
 
 //clear screen regardless of platform
 void clearScreen()
