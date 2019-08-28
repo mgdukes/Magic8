@@ -1,14 +1,13 @@
-// TestProgram1.cpp : Defines the entry point for the console application.
-//
+// Magic8: the snarky magic 8 ball program
 
-//#include "stdafx.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 void inputQ();
 void answerQ();
-
+void clearScreen();
+void pause();
 
 int main()
 {
@@ -21,11 +20,11 @@ int main()
 		<< "				8     8\n"
 		<< "				8     8\n"
 		<< "				8888888\n\n";
-	system("pause");
+	pause();
 	do
 	{
-		system("cls");
-		cout << "Please enter your question: \n";
+		clearScreen();
+		cout << "Please enter a yes/no question: \n";
 		inputQ();
 		cout << "\n...\n\n";
 		answerQ();
@@ -47,7 +46,7 @@ void inputQ()
 
 void answerQ()
 {
-	int num = (rand() % 15) + 1;
+	int num = (rand() % 20) + 1;
 	switch (num)
 	{
 	case 1:
@@ -95,7 +94,40 @@ void answerQ()
 	case 15:
 		cout << "What do I look like, a crystal ball?\n";
 		break;
+	case 16:
+		cout << "Look, pal, that's your problem.\n";
+		break;
+	case 17:
+		cout << "What are you talking about???\n";
+		break;
+	case 18:
+		cout << "I am Groot.\n";
+		break;
+	case 19:
+		cout << "Ehhh, wibbly-wobbly timey-wimey.";
+		break;
+	case 20:
+		cout << "Use the Force, Luke.\n";
+		break;
 	default:
 		cout << "Errr, sorry, there's been an error. Try again.\n";
 	}
+}
+
+//clear screen regardless of platform
+void clearScreen()
+{
+	#ifdef WINDOWS
+		system("cls");
+	#else
+		// Assume POSIX
+		system ("clear");
+	#endif
+}
+
+//to replace system("pause") command
+void pause()
+{
+	cout << "Press enter to continue ..."; 
+	cin.get();  
 }
