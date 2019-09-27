@@ -97,7 +97,7 @@ string answerQ()
 		response = "Make it so.";
 		break;
 	case 14:
-		response = "Affirmative, Captain. Live long and prosper.";
+		response = "Affirmative, Captain.";
 		break;
 	case 15:
 		response = "What do I look like, a crystal ball?";
@@ -106,7 +106,7 @@ string answerQ()
 		response = "Look, pal, that's your problem.";
 		break;
 	case 17:
-		response = "What are you talking about???";
+		response = "Use the Force, Luke.";
 		break;
 	case 18:
 		response = "I am Groot.";
@@ -115,7 +115,19 @@ string answerQ()
 		response = "Ehhh, wibbly-wobbly timey-wimey.";
 		break;
 	case 20:
-		response = "Use the Force, Luke.";
+		response = "What's your problem???";
+		break;
+	case 21:
+		response = "LOL that's cute.";
+		break;
+	case 22:
+		response = "Seriously?";
+		break;	
+	case 23:
+		response = "Well duhhhh...";
+		break;
+	case 24:
+		response = "50 points from Griffindor for asking that question.";
 		break;
 	default:
 		response = "Errr, sorry, there's been an error. Try again.";
@@ -127,7 +139,7 @@ string answerQ()
 int randomNumber()
 {
 	const int lower = 1;
-	const int upper = 20;
+	const int upper = 24;
 	random_device randDev;
 	mt19937 generator(randDev());
 	uniform_int_distribution<int> distr(lower, upper);
